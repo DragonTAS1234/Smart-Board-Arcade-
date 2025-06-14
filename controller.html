@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Smart Controller</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 20px; }
+    #joystick { width: 100px; height: 100px; background: #ccc; margin: auto; border-radius: 50%; }
+    #strike { padding: 10px 20px; margin-top: 20px; font-size: 18px; }
+  </style>
+</head>
+<body>
+  <h1>Phone Controller</h1>
+  <div id="joystick">Joystick</div>
+  <button id="strike">Strike</button>
+  <script>
+    const ws = new WebSocket("ws://192.168.1.5:8080");
+    ws.onopen = () => console.log("Connected");
+
+    document.getElementById("strike").onclick = () => {
+      ws.send(JSON.stringify({ type: "strike" }));
+    };
+
+    setInterval(() => {
+      // Dummy joystick input sent every second
+      ws.send(JSON.stringify({ type: "move", x: 0.5, y: 0.2 }));
+    }, 1000);
+  </script>
+</body>
+</html>
