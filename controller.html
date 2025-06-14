@@ -2,29 +2,64 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Smart Controller</title>
+  <title>Smart Game Controller</title>
   <style>
-    body { font-family: sans-serif; text-align: center; padding: 20px; }
-    #joystick { width: 100px; height: 100px; background: #ccc; margin: auto; border-radius: 50%; }
-    #strike { padding: 10px 20px; margin-top: 20px; font-size: 18px; }
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      background: #f0f0f0;
+      padding: 30px;
+    }
+    #joystick {
+      width: 100px;
+      height: 100px;
+      background: #ccc;
+      border-radius: 50%;
+      margin: 40px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      user-select: none;
+    }
+    button {
+      padding: 15px 30px;
+      font-size: 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 8px;
+      background-color: #4285f4;
+      color: white;
+    }
   </style>
 </head>
 <body>
-  <h1>Phone Controller</h1>
-  <div id="joystick">Joystick</div>
+
+  <h1>Game Controller</h1>
+  <div id="joystick">⬆️</div>
   <button id="strike">Strike</button>
+
   <script>
-    const ws = new WebSocket("ws://192.168.1.5:8080");
-    ws.onopen = () => console.log("Connected");
+    const ws = new WebSocket("ws://192.168.1.5:8080"); // replace with your tablet's local IP
+
+    ws.onopen = () => {
+      console.log("Connected to game server");
+    };
+
+    ws.onerror = () => {
+      alert("Failed to connect. Make sure your tablet and phone are on the same Wi-Fi.");
+    };
 
     document.getElementById("strike").onclick = () => {
       ws.send(JSON.stringify({ type: "strike" }));
     };
 
+    // Simulated joystick movement (basic example)
     setInterval(() => {
-      // Dummy joystick input sent every second
-      ws.send(JSON.stringify({ type: "move", x: 0.5, y: 0.2 }));
-    }, 1000);
+      const direction = { x: Math.random() * 2 - 1, y: Math.random() * 2 - 1 };
+      ws.send(JSON.stringify({ type: "move", direction }));
+    }, 100); // Sends movement data every 100ms
   </script>
+
 </body>
 </html>

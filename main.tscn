@@ -1,1 +1,2 @@
-placeholder scene file
+[gd_scene load_steps=2 format=2]
+[node name="Main" type="Node2D"]

@@ -1,23 +1,23 @@
-# Smart Board Arcade 🎮📱
 
-This is a smart arcade-style air hockey game made in Godot 4.0, where players use their **phones as controllers** and the game runs on a **tablet or PC**.
+# Smart Board Arcade 🏓📱
 
-## Features
-- 2 to 4 player local multiplayer
-- WebSocket controller input from phones
-- Strike dash ability
-- Simple arcade-style physics
+A smart air hockey-style game made in Godot, where each player uses their **phone as a controller**, and the game runs on a **tablet** or **PC** screen.
 
-## How to Play
-1. Install `SmartBoardArcadeGame.apk` on your Android tablet
-2. Open `controller.html` on your phone browser
-3. Connect both devices to the same Wi-Fi
-4. Play and have fun!
+## 📲 How to Play
+1. Download and install the APK on your Android tablet.
+2. Open `controller.html` in your phone's browser.
+3. Connect both devices to the same Wi-Fi network.
+4. Use your phone's joystick to move and the Strike button to dash!
 
-## Controls
-- Joystick: Move your paddle
-- Strike button: Dash forward to hit the ball
+## 🎮 Game Modes Supported
+- 1v1
+- 1v1v1
+- 1v1v1v1
+- 2v2
 
----
+## 🚧 Made With
+- Godot 4.0
+- HTML (for controllers)
+- WebSocket networking
 
-By [DragonTAS1234](https://github.com/DragonTAS1234)
+Made by [DragonTAS1234](https://github.com/DragonTAS1234)
